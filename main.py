@@ -3,6 +3,10 @@ from helper import classify_emotion
 from flask import Flask, request, jsonify, render_template, url_for
 import os
 
+
+model_path = './best_model.h5'
+model = load_model(model_path)
+
 app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])

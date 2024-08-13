@@ -13,8 +13,6 @@ from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.losses import CategoricalCrossentropy
 from tensorflow.keras.models import load_model
 
-model_path = 'C:\\Users\\Rober\\deploy\\best_model.h5'
-model = load_model(model_path)
 emotion_labels = ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']
 
 #Defined functions
@@ -49,7 +47,7 @@ def preprocess_image(image_path, target_size=(48, 48)):
   return img_array_expanded_dims
 
 
-def classify_emotion(image_path):
+def classify_emotion(image_path, model):
   preprocessed_image = preprocess_image(image_path)
   prediction = model.predict(preprocessed_image)
   predicted_class = np.argmax(prediction)

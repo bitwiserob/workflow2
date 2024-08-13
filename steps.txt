@@ -1,0 +1,20 @@
+freeze into requirements.txt
+    freeze > requirements.txt
+
+create procfile
+
+add gunicorn to requirements
+    pip install gunicorn
+    freeze > requirements.txt
+
+
+
+
+
+
+
+resources
+https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/
+https://realpython.com/flask-by-example-part-1-project-setup/
+https://devcenter.heroku.com/articles/build-docker-images-heroku-yml
+https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
