@@ -5,13 +5,17 @@ import os
 
 app = Flask(__name__)
 
+model_path = './best_model.h5'
+model = load_model(model_path)
+
+
 @app.route('/', methods=['POST', 'GET'])
 def predict():
     if request.method == 'POST':
         file = request.files['file']
         file_path = os.path.join('static', 'uploaded_image.jpg')
         file.save(file_path)
-        emotion = classify_emotion(file_path)
+        emotion = classify_emotion(file_path, model)
 
         return render_template('index.html', image_path=url_for('static', filename='uploaded_image.jpg'), emotion=emotion)
 
