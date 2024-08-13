@@ -1,7 +1,18 @@
 from tensorflow.keras.models import load_model
-from helper import display_prediction
+from helper import classify_emotion
+from flask import Flask, request, jsonify
 
 
-model_path = 'C:\\Users\\Rober\\deploy\\best_model.h5'
-model = load_model(model_path)
-display_prediction('image.jpg')
+app = Flask(__name__)
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    if request.method == 'POST':
+        file = request.files['file']
+        file.save('image_saved.jpg')
+        emotion = classify_emotion('image_saved.jpg')
+        return jsonify({'emotion': emotion})
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

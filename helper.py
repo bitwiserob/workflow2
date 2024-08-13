@@ -62,3 +62,6 @@ def display_prediction(image_path):
   plt.title(f'Predicted Emotion: {emotion}')
   plt.axis('off')
   plt.show()
+
+
+  
